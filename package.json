@@ -1,0 +1,15 @@
+{
+  "name": "wazuh-backend",
+  "version": "1.0.0",
+  "description": "Wazuh Technical Task",
+  "dependencies": {
+    "jest": "^27.2.5",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Bruno Caruso",
+  "license": "ISC"
+}
