@@ -1,0 +1,56 @@
+org: silvergraphs
+app: wazuh-backend
+service: wazuh-backend
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: "20201221"
+
+functions:
+  # Tasks
+  getAllTasks:
+    handler: tasks.getAllTasks
+    events:
+      - http:
+          path: /tasks
+          method: get
+  getTask:
+    handler: tasks.getTask
+    events:
+      - http:
+          path: /tasks/{id}
+          method: get
+          request:
+            parameters:
+              paths:
+                id: false
+  # Users
+  getAllUsers:
+    handler: users.getAllUsers
+    events:
+      - http:
+          path: /users
+          method: get
+  getUser:
+    handler: users.getUser
+    events:
+      - http:
+          path: /users/{id}
+          method: get
+          request:
+            parameters:
+              paths:
+                id: false
+  getAllTasksFromUser:
+    handler: users.getAllTasksFromUser
+    events:
+      - http:
+          path: /users/{id}/tasks
+          method: get
+          request:
+            parameters:
+              paths:
+                id: false
