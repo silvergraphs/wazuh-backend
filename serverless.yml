@@ -17,12 +17,14 @@ functions:
       - http:
           path: /tasks
           method: get
+          cors: true
   getTask:
     handler: tasks.getTask
     events:
       - http:
           path: /tasks/{id}
           method: get
+          cors: true
           request:
             parameters:
               paths:
@@ -34,12 +36,14 @@ functions:
       - http:
           path: /users
           method: get
+          cors: true
   getUser:
     handler: users.getUser
     events:
       - http:
           path: /users/{id}
           method: get
+          cors: true
           request:
             parameters:
               paths:
@@ -50,6 +54,7 @@ functions:
       - http:
           path: /users/{id}/tasks
           method: get
+          cors: true
           request:
             parameters:
               paths:

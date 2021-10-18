@@ -8,6 +8,7 @@ const { get } = require('lodash');
 module.exports.getAllUsers = async (event) => {
   let result = {
     statusCode: 200,
+    headers: { 'Access-Control-Allow-Origin': '*' },
     body: null,
   };
 
@@ -21,6 +22,7 @@ module.exports.getAllUsers = async (event) => {
       data: users,
     };
     result.statusCode = 200;
+    result.headers = { 'Access-Control-Allow-Origin': '*' };
     result.body = JSON.stringify(response);
   } catch (error) {
     result.statusCode = 500
@@ -37,6 +39,7 @@ module.exports.getAllUsers = async (event) => {
 module.exports.getUser = async (event) => {
   let result = {
     statusCode: 200,
+    headers: { 'Access-Control-Allow-Origin': '*' },
     body: null,
   };
   try {
@@ -50,6 +53,7 @@ module.exports.getUser = async (event) => {
     const response = users.find(user => user.id === id) || {error: 'User with provided ID not found'}
 
     result.statusCode = 200;
+    result.headers = { 'Access-Control-Allow-Origin': '*' };
     result.body = JSON.stringify(response);
   } catch (error) {
     result.statusCode = 500
@@ -66,6 +70,7 @@ module.exports.getUser = async (event) => {
 module.exports.getAllTasksFromUser = async (event) => {
   let result = {
     statusCode: 200,
+    headers: { 'Access-Control-Allow-Origin': '*' },
     body: null,
   };
 
@@ -119,6 +124,7 @@ module.exports.getAllTasksFromUser = async (event) => {
     };
 
     result.statusCode = 200;
+    result.headers = { 'Access-Control-Allow-Origin': '*' };
     result.body = JSON.stringify(response);
   } catch (error) {
     console.error(error)

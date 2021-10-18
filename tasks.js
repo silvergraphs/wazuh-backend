@@ -8,7 +8,7 @@ const { get } = require('lodash');
 module.exports.getAllTasks = async (event) => {
    let result = {
       statusCode: 200,
-      body: null,
+     headers: { 'Access-Control-Allow-Origin': '*' },
    };
 
    try {
@@ -47,6 +47,7 @@ module.exports.getAllTasks = async (event) => {
       };
 
       result.statusCode = 200;
+     result.headers = { 'Access-Control-Allow-Origin': '*' };
       result.body = JSON.stringify(response);
       } catch (error) {
       result.statusCode = 500
@@ -63,6 +64,7 @@ module.exports.getAllTasks = async (event) => {
 module.exports.getTask = async (event) => {
   let result = {
     statusCode: 200,
+    headers: { 'Access-Control-Allow-Origin': '*' },
     body: null,
   };
   try {
@@ -76,6 +78,7 @@ module.exports.getTask = async (event) => {
     const response = rawTasks.find(task => task.id === id) || {error: 'Task with provided ID not found'}
 
     result.statusCode = 200;
+    result.headers = { 'Access-Control-Allow-Origin': '*' };
     result.body = JSON.stringify(response);
   } catch (error) {
     result.statusCode = 500
