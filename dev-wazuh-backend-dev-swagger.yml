@@ -1,0 +1,137 @@
+---
+swagger: "2.0"
+info:
+  version: "2021-10-16T18:42:36Z"
+  title: "dev-wazuh-backend"
+host: "27dv978gqb.execute-api.us-east-1.amazonaws.com"
+basePath: "/dev"
+schemes:
+- "https"
+paths:
+  /tasks:
+    get:
+      responses:
+        "200":
+          description: "List all tasks successfully"
+          schema:
+            type: "object"
+            properties:
+              totalItems:
+                type: "integer"
+              data:
+                type: "array"
+                items:
+                  $ref: "#/definitions/Task"
+  /tasks/{id}:
+    get:
+      parameters:
+      - name: "id"
+        in: "path"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "List desired task successfully"
+          schema:
+            $ref: "#/definitions/Task"
+  /users:
+    get:
+      responses:
+        "200":
+          description: "List all users successfully"
+          schema:
+            type: "object"
+            properties:
+              totalItems:
+                type: "integer"
+              data:
+                type: "array"
+                items:
+                  $ref: "#/definitions/User"
+  /users/{id}:
+    get:
+      parameters:
+      - name: "id"
+        in: "path"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "List desired user successfully"
+          schema:
+            $ref: "#/definitions/User"
+  /users/{id}/tasks:
+    get:
+      parameters:
+      - name: "id"
+        in: "path"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "List all tasks from desired user successfully"
+          schema:
+            type: "object"
+            properties:
+              totalItems:
+                type: "integer"
+              data:
+                type: "array"
+                items:
+                  $ref: "#/definitions/Task"
+definitions:
+  Task:
+    type: "object"
+    properties:
+      user_id:
+        type: "integer"
+      id:
+        type: "integer"
+      title:
+        type: "string"
+      completed:
+        type: "boolean"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      username:
+        type: "string"
+      email:
+        type: "string"
+      address:
+        type: "object"
+        properties:
+          street:
+            type: integer
+          suite:
+            type: string
+          city:
+            type: string
+          zipcode:
+            type: string
+          geo:
+            type: object
+            properties:
+              lat:
+                type: number
+              lng:
+                type: number
+      phone:
+        type: "string"
+      website:
+        type: "string"
+      company:
+        type: "object"
+        properties:
+          name:
+            type: "string"
+          catchPhrase:
+            type: "string"
+          bs:
+            type: "string"
+      completed:
+        type: "boolean"
